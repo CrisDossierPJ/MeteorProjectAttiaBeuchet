@@ -1,0 +1,20 @@
+<template name="infoUser">
+    <h1>Modifier l'utilisateur</h1>
+    {{#autoForm collection="Meteor.users" id="updateUsers"}}
+        <fieldset>
+            <legend>Informations obligatoires</legend>
+            {{> afQuickField name="username" value=user.username }}
+            {{#each user.emails}}
+            {{> afQuickField name="emails.$.address" value=this.address}}
+            {{/each}}
+
+        </fieldset>
+        <fieldset>
+            <legend>Informations facultatives</legend>
+            {{> afQuickField name="profile.firstName" value=user.profile.firstName}}
+            {{> afQuickField name="profile.lastName" value=user.profile.lastName}}
+            {{> afQuickField name="profile.birthDay" value=user.profile.birthDay}}
+            {{> afQuickField name="profile.gender" value=user.profile.gender}}
+        </fieldset>
+    {{/autoForm}}
+</template>

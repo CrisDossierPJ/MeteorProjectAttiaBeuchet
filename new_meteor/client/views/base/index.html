@@ -1,0 +1,21 @@
+<!-- MAIN LAYOUT -->
+<template name="index">
+    <head>
+        <title>{{setTitle "Accueil"}}</title>
+        <meta charset="utf-8" />
+    </head>
+    <body>
+    <div class="container">
+        <!-- Header de notre site -->
+        {{> header}}
+        <!-- Partie menu de notre site -->
+        <div class="row">
+            <nav class="col-md-3">{{> menu}}</nav>
+            <section class="col-md-9 well">{{> yield}}</section>
+        </div>
+        <!-- Footer de notre site -->
+        {{> footer}}
+    </div>
+    </body>
+</template>
+

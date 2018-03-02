@@ -1,0 +1,16 @@
+<template name="updateCommerce">
+    <h1>Modifier le commerce</h1>
+    {{#autoForm collection="Commerces" id="updateCommerces"}}
+        <fieldset>
+            <legend>Informations obligatoires</legend>
+            {{> afQuickField name="name" value=Commerce.name placeholder=Commerce.name}}
+            {{> afQuickField name="adresse" value=Commerce.adresse placeholder=Commerce.adresse}}
+            {{> afQuickField name="horaires" value=Commerce.horaires placeholder=Commerce.horaires}}
+            {{> afQuickField name="telephone" value=Commerce.telephone placeholder=Commerce.telephone}}
+            {{> afQuickField name="picture" value=Commerce.picture placeholder=Commerce.picture}}
+            {{> afQuickField name="latitude" value=Commerce.latitude placeholder=Commerce.latitude}}
+            {{> afQuickField name="longitude" value=Commerce.longitude placeholder=Commerce.longitude}}
+        </fieldset>
+        <button type="submit" class="btn btn-primary">Valider</button>
+    {{/autoForm}}
+</template>

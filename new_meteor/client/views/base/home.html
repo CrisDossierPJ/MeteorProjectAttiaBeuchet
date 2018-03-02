@@ -1,0 +1,9 @@
+<!-- HOME -->
+<template name="home">
+    <h3>Home</h3>
+    <ul>
+        {{#each Commerces }}
+            <li><a id="goToCommerce" href="/commerce/{{ _id }}">{{ name }}</a></li>
+        {{/each}}
+    </ul>
+</template>

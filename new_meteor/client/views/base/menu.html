@@ -1,0 +1,11 @@
+<template name="menu">
+    <h3>Menu</h3>
+    <ul class="nav nav-pills nav-stacked">
+        <li><a href="{{pathFor route='home'}}">Accueil</a></li>
+        {{#if isAdmin }}
+            <li><a href="{{pathFor route='commerce.add'}}">Ajouter un commerce</a>  </li>
+            <li><a href="{{pathFor route='users.get'}}">liste des utilisateurs</a>  </li>
+        {{/if }}
+    </ul>
+    {{> account }}
+</template>

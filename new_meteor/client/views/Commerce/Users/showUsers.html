@@ -1,0 +1,7 @@
+<template name="showUsers">
+    <h1 class="text-center" >Liste des utilisateurs</h1>
+    {{#each users }}
+        <li>{{ profile.firstName }} {{ profile.lastName }} <a href="/admin/user/{{ _id }}/info">plus d'info</a></li>
+    {{/each}}
+
+</template>

@@ -1,0 +1,12 @@
+<template name="header">
+    <div class="row">
+        <header class="col-md-12 jumbotron">
+            <h1>
+                {{getGlobal 'appName' }} <br />
+                {{#if getGlobal 'appSlogan' }}
+                    <small class="slogan">{{getGlobal 'appSlogan'}}</small>
+                {{/if}}
+            </h1>
+        </header>
+    </div>
+</template>

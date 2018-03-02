@@ -1,0 +1,14 @@
+<template name="addArticle">
+    <h1>Ajouter un article</h1>
+
+
+    {{#autoForm collection="Articles" id="insertArticles"}}
+        <fieldset>
+            {{> afQuickField name="name"}}
+            {{> afQuickField name="price"}}
+            {{> afQuickField name="quantity" placeholder="10"}}
+            <input type="hidden" value="{{ Param }}" name="commerce_id">
+        </fieldset>
+        <button type="submit" class="btn btn-primary">Valider</button>
+    {{/autoForm}}
+</template>

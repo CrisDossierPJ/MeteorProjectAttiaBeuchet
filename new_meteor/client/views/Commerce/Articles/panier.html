@@ -1,0 +1,8 @@
+<!-- REGISTER -->
+<template name="panier">
+    <h1 class="text-center" >Mon Panier</h1>
+    {{#each getPanier }}
+        <li>{{ name }} : {{ price }} €, nombre : {{ qte }}  </li>
+    {{/each}}
+
+</template>

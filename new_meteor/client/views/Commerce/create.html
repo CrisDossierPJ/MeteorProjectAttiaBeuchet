@@ -1,0 +1,19 @@
+<!-- REGISTER -->
+<template name="addCommerce">
+    <h1 class="text-center" >Enregistrement</h1>
+    {{#autoForm collection="Commerces" id="insertCommerces"}}
+        <fieldset>
+            <legend>Informations obligatoires</legend>
+            {{> afQuickField name="name"}}
+            {{> afQuickField name="adresse"}}
+            {{> afQuickField name="horaires"}}
+            {{> afQuickField name="telephone"}}
+            {{> afQuickField name="picture"}}
+            {{> afQuickField name="latitude"}}
+            {{> afQuickField name="longitude"}}
+
+
+        </fieldset>
+        <button type="submit" class="btn btn-primary">Valider</button>
+    {{/autoForm}}
+</template>

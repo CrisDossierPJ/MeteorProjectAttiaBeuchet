@@ -1,0 +1,17 @@
+<template name="deleteArticle">
+<h1>Etes vous sur de supprimer cet article ?
+</h1>
+    {{#autoForm collection="Articles" id="deleteArticles"}}
+        <fieldset>
+            {{> afQuickField name="name" value=Article.name placeholder=Article.name type="hidden"}}
+            {{> afQuickField name="price" value=Article.price placeholder=Article.price type="hidden"}}
+            {{> afQuickField name="quantity" value=Article.quantity placeholder=Article.quantity type="hidden"}}
+        </fieldset>
+        <button type="submit" class="btn btn-primary">Supprimer</button>
+    {{/autoForm}}
+    <script>
+        //alert("HI")
+       // document.getElementsByTagName('form')[0].submit();
+
+    </script>
+</template>

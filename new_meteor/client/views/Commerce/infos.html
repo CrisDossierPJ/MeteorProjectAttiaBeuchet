@@ -1,0 +1,25 @@
+<template name="infos">
+<h2>Infos</h2>
+    <ul>
+        <li>Nom : {{ Commerce.name }}</li>
+        <li>Telephone : {{ Commerce.telephone}}</li>
+        <li>Horraires : {{ Commerce.horraires }}</li>
+        <li>Adresse : {{ Commerce.adresse }}</li>
+    </ul>
+
+    {{#if isAdmin }}
+        {{#autoForm collection="Commerces" id="deleteCommerces"}}
+            <fieldset>
+                <legend>Informations obligatoires</legend>
+                {{> afQuickField name="name" value=Commerce.name placeholder=Commerce.name type = "hidden"}}
+                {{> afQuickField name="adresse" value=Commerce.adresse placeholder=Commerce.adresse type = "hidden"}}
+                {{> afQuickField name="horaires" value=Commerce.horaires placeholder=Commerce.horaires type = "hidden"}}
+                {{> afQuickField name="telephone" value=Commerce.telephone placeholder=Commerce.telephone type ="hidden"}}
+                {{> afQuickField name="picture" value=Commerce.picture placeholder=Commerce.picture type ="hidden"}}
+                {{> afQuickField name="latitude" value=Commerce.latitude placeholder=Commerce.latitude type ="hidden"}}
+                {{> afQuickField name="longitude" value=Commerce.longitude placeholder=Commerce.longitude type = "hidden"}}
+            </fieldset>
+            <button type="submit" class="btn btn-primary">Supprimer ce commerce</button>
+        {{/autoForm}}
+    {{/if }}
+</template>

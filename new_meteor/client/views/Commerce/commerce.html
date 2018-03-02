@@ -1,0 +1,77 @@
+<template name="commerce">
+    <h1>Bienvenue dans {{ Commerce.name }}</h1>
+    <ul class="nav nav-pills nav-stacked">
+        {{#if isAdmin }}
+            <li><a href="/commerce/{{ Commerce._id }}/add">Ajouter un article</a></li>
+            <li><a href="/commerce/{{ Commerce._id }}/update">Modifier le commerce</a></li>
+        {{/if }}
+    </ul>
+    <ul class="nav nav-pills nav-stacked">
+
+        {{#each Articles }}
+            <li>
+                <script>console.log('{{name}}');</script>
+                {{ name }} : {{ price }} €  Quantité : {{quantity}} <br>
+                {{#if currentUser }}
+                    <button onclick="addToCaddy({ name: '{{name}}', _id: '{{_id}}', price: '{{price}}' })">Ajouter au
+                        Panier
+                    </button>
+                    {{#if isAdmin }}
+                        <a href="/commerce/{{ Commerce._id}}/{{ _id }}">modifier</a>
+                        <a href="/commerce/delete/{{ _id }}">Supprimer</a>
+                    {{/if }}
+                {{/if }}
+            </li>
+
+
+
+            <script>
+                function addToCaddy(article) {
+                    let articlehere = Articles.findOne('{{ _id }}');
+                    if (articlehere.quantity !== 0 ){
+                        //console.log('{{ Commerce.latitude }}');
+                        let quantite = articlehere.quantity - 1;
+                        Articles.update({"_id": '{{_id}}'},
+                                {
+                                    $set: {'quantity': quantite},
+                                }
+                                , function (err) {
+                                    if (err) {
+                                        error = new Error("Une erreur s'est produite");
+                                    }
+                                });
+                        let paniervide = [];
+                        let panier = Session.get('Panier');
+                        if (panier) {
+                            paniervide = panier;
+                            for (let i = panier.length - 1; i < panier.length; i++) {
+                                let current_article = paniervide[i];
+                                if (article._id === current_article._id) {
+                                    current_article.qte++;
+                                } else {
+                                    article.qte = 0;
+                                    paniervide.push(article);
+                                }
+                            }
+                            Session.delete('Panier');
+                            Session.set('Panier', paniervide);
+                        } else {
+                            article.qte = 1;
+                            paniervide.push(article);
+                            Session.set('Panier', paniervide);
+                        }
+                    }
+                    else{
+                        alert('Cet article n\'est plus disponible !     ')
+                    }
+
+                }
+            </script>
+        {{/each}}
+
+        {{> commerceFooter }}
+        <img src="{{ Commerce.picture }}" alt="Devanture du magasin">
+    </ul>
+
+
+</template>
